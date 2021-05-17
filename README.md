@@ -77,3 +77,85 @@ ts = SpeechTranslation('你的APP_KEY', '你的APP_SECRET')
 result = ts.translate('speech.wav', 'zh-CHS', 'en')
 print(result)
 ```
+
+#### [通用文字识别服务](https://ai.youdao.com/DOCSIRMA/html/%E6%96%87%E5%AD%97%E8%AF%86%E5%88%ABOCR/API%E6%96%87%E6%A1%A3/%E9%80%9A%E7%94%A8%E6%96%87%E5%AD%97%E8%AF%86%E5%88%AB%E6%9C%8D%E5%8A%A1/%E9%80%9A%E7%94%A8%E6%96%87%E5%AD%97%E8%AF%86%E5%88%AB%E6%9C%8D%E5%8A%A1-API%E6%96%87%E6%A1%A3.html)
+
+| 参数			| 默认值			| 描述			|
+| ------------- | ------------- | ------------- |
+| img			| 无，必填		| 待识别图像路径		|
+| langType		| 无，必填		| 要识别的语言类型	|
+| angle			| None	| 是否进行360角度识别，0：不识别，1：识别。默认不识别（0） |
+| column		| None	| 是否按多列识别，onecolumn：按单列识别；columns：按多列识别。默认按单列识别 |
+| rotate		| None	| 是否需要获得文字旋转角度，donot_rotate：不需要得到倾斜角度，rotate：得到倾斜角度。默认不需要 |
+
+```Python
+from youdaoai import OCRGeneral
+
+
+ocr = OCRGeneral('你的APP_KEY', '你的APP_SECRET')
+result = ocr.recognize('ocr_general.png')
+print(result)
+```
+
+#### [身份证识别服务](https://ai.youdao.com/DOCSIRMA/html/%E6%96%87%E5%AD%97%E8%AF%86%E5%88%ABOCR/API%E6%96%87%E6%A1%A3/%E9%80%9A%E7%94%A8%E6%96%87%E5%AD%97%E8%AF%86%E5%88%AB%E6%9C%8D%E5%8A%A1/%E9%80%9A%E7%94%A8%E6%96%87%E5%AD%97%E8%AF%86%E5%88%AB%E6%9C%8D%E5%8A%A1-API%E6%96%87%E6%A1%A3.html)
+
+| 参数			| 默认值			| 描述			|
+| ------------- | ------------- | ------------- |
+| img			| 无，必填		| 待识别图像路径		|
+
+```Python
+from youdaoai import OCRIDCard
+
+
+ocr = OCRIDCard('你的APP_KEY', '你的APP_SECRET')
+result = ocr.recognize('身份证.jpg')
+print(result)
+```
+
+#### [购物小票识别服务](https://ai.youdao.com/DOCSIRMA/html/%E6%96%87%E5%AD%97%E8%AF%86%E5%88%ABOCR/API%E6%96%87%E6%A1%A3/%E8%B4%AD%E7%89%A9%E5%B0%8F%E7%A5%A8%E8%AF%86%E5%88%AB%E6%9C%8D%E5%8A%A1/%E8%B4%AD%E7%89%A9%E5%B0%8F%E7%A5%A8%E8%AF%86%E5%88%AB%E6%9C%8D%E5%8A%A1-API%E6%96%87%E6%A1%A3.html)
+
+| 参数			| 默认值			| 描述			|
+| ------------- | ------------- | ------------- |
+| img			| 无，必填		| 待识别图像路径		|
+
+```Python
+from youdaoai import OCRReceipt
+
+
+ocr = OCRReceipt('你的APP_KEY', '你的APP_SECRET')
+result = ocr.recognize('购物小票.jpg')
+print(result)
+```
+
+#### [表格OCR服务](https://ai.youdao.com/DOCSIRMA/html/%E6%96%87%E5%AD%97%E8%AF%86%E5%88%ABOCR/API%E6%96%87%E6%A1%A3/%E8%A1%A8%E6%A0%BCOCR%E6%9C%8D%E5%8A%A1/%E8%A1%A8%E6%A0%BCOCR%E6%9C%8D%E5%8A%A1-API%E6%96%87%E6%A1%A3.html)
+
+| 参数			| 默认值			| 描述			|
+| ------------- | ------------- | ------------- |
+| img			| 无，必填	| 待识别图像路径		|
+| docType		| 无，必填	| 服务器响应类型，目前支持json和Excel	|
+| excel_filepath | None		| 若docType为excel可通过该参数指定生成的xlsx文件路径，若不填该参数则不会生成xlsx文件|
+| angle			| None		| 是否进行360角度识别，0：不识别，1：识别。默认不识别（0） |
+
+```Python
+from youdaoai import OCRTable
+
+
+ocr = OCRTable('你的APP_KEY', '你的APP_SECRET')
+result = ocr.recognize('表格图片.jpg', 'excel', 'test.xlsx')
+print(result)
+```
+
+#### [名片识别服务](https://ai.youdao.com/DOCSIRMA/html/%E6%96%87%E5%AD%97%E8%AF%86%E5%88%ABOCR/API%E6%96%87%E6%A1%A3/%E5%90%8D%E7%89%87%E8%AF%86%E5%88%AB%E6%9C%8D%E5%8A%A1/%E5%90%8D%E7%89%87%E8%AF%86%E5%88%AB%E6%9C%8D%E5%8A%A1-API%E6%96%87%E6%A1%A3.html)
+
+| 参数			| 默认值			| 描述			|
+| ------------- | ------------- | ------------- |
+| img			| 无，必填		| 待识别图像路径		|
+
+```Python
+from youdaoai import OCRNamecard
+
+
+ocr = OCRNamecard('你的APP_KEY', '你的APP_SECRET')
+result = ocr.recognize('名片照片.jpg')
+print(result)
+```
