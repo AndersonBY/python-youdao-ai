@@ -159,3 +159,60 @@ ocr = OCRNamecard('你的APP_KEY', '你的APP_SECRET')
 result = ocr.recognize('名片照片.jpg')
 print(result)
 ```
+
+
+#### [语音合成服务](https://ai.youdao.com/DOCSIRMA/html/%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90TTS/API%E6%96%87%E6%A1%A3/%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90%E6%9C%8D%E5%8A%A1/%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90%E6%9C%8D%E5%8A%A1-API%E6%96%87%E6%A1%A3.html)
+
+| 参数			| 默认值			| 描述			|
+| ------------- | ------------- | ------------- |
+| q				| 无，必填	| 待合成音频文件的文本字符串 |
+| langType		| 无，必填	| 合成文本的语言类型 |
+| filepath		| 无，必填	| 指定生成的mp3文件路径 |
+| voice			| 0			| 翻译结果发音选择，0为女声，1为男声，默认为女声 |
+| speed			| 1			| 合成音频的语速，1为正常速度，最大为2，最小为0.1 |
+| volumn		| 1			| 合成音频的音量，正常为1.00，最大为5.00，最小为0.50 |
+
+```Python
+from youdaoai import TTS
+
+
+tts = TTS('你的APP_KEY', '你的APP_SECRET')
+result = tts.build('大家好我是毕老师', 'zh-CHS', '语音合成.mp3')
+print(result)
+```
+
+```Python
+from youdaoai import TTS
+
+tts = TTS('你的APP_KEY', '你的APP_SECRET')
+result = tts.build('Embedded finance will help fill the life insurance coverage gap', 'en-USA', '英语语音合成.mp3', 1, 1.5, 3)
+print(result)
+```
+
+
+#### [短语音识别服务](https://ai.youdao.com/DOCSIRMA/html/%E8%AF%AD%E9%9F%B3%E8%AF%86%E5%88%ABASR/API%E6%96%87%E6%A1%A3/%E7%9F%AD%E8%AF%AD%E9%9F%B3%E8%AF%86%E5%88%AB%E6%9C%8D%E5%8A%A1/%E7%9F%AD%E8%AF%AD%E9%9F%B3%E8%AF%86%E5%88%AB%E6%9C%8D%E5%8A%A1-API%E6%96%87%E6%A1%A3.html)
+
+| 参数			| 默认值			| 描述			|
+| ------------- | ------------- | ------------- |
+| q				| 无，必填		| 待合成音频文件的文本字符串 |
+| langType		| 无，必填		| 合成文本的语言类型，详情见官方文档 |
+| rate			| 'auto'		| 采样率，默认会自动分析（仅支持分析wav格式），非wav格式请手动指定采样率 |
+| format_		| 'wav'			| 语音文件的格式， 目前支持wav、aac、mp3 |
+| channel		| '1'			| 声道数， 仅支持单声道，请填写固定值1 |
+
+```Python
+from youdaoai import ASR
+
+
+asr = ASR('你的APP_KEY', '你的APP_SECRET')
+result = asr.recognize('speech.wav', 'zh-CHS')
+print(result)
+```
+
+```Python
+from youdaoai import ASR
+
+asr = ASR('你的APP_KEY', '你的APP_SECRET')
+result = asr.recognize('speech.mp3', 'zh-CHS', 16000, 'mp3')
+print(result)
+```
