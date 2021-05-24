@@ -2,13 +2,13 @@
 # @Author: Anderson
 # @Date:   2019-11-14 17:45:03
 # @Last Modified by:   ander
-# @Last Modified time: 2021-05-17 14:30:51
+# @Last Modified time: 2021-05-24 14:37:20
 import setuptools
 
 
 setuptools.setup(
     name="youdaoai",
-    version="0.0.2",
+    version="0.0.3",
     author="MakerBi",
     author_email="andersonby@163.com",
     description="Python API wrapper for ai.youdao.com.",
