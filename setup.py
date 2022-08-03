@@ -8,14 +8,14 @@ import setuptools
 
 setuptools.setup(
     name="youdaoai",
-    version="0.0.3",
+    version="0.0.4",
     author="MakerBi",
     author_email="andersonby@163.com",
     description="Python API wrapper for ai.youdao.com.",
     long_description_content_type="text/markdown",
     url="https://github.com/AndersonBY/python-youdao-ai",
     packages=setuptools.find_packages(),
-    install_requires=[],
+    install_requires=["requests"],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
