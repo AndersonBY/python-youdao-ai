@@ -16,3 +16,17 @@ from .ocr_table import OCRTable
 from .tts import TTS
 
 from .asr import ASR
+
+
+__all__ = [
+    "Translation",
+    "OCRTranslation",
+    "SpeechTranslation",
+    "OCRGeneral",
+    "OCRIDCard",
+    "OCRReceipt",
+    "OCRNamecard",
+    "OCRTable",
+    "TTS",
+    "ASR",
+]
