@@ -1,0 +1,21 @@
+[project]
+name = "python-youdao-ai"
+version = "0.1.0"
+description = "Python SDK for Youdao AI."
+authors = [{ name = "Anderson", email = "andersonby@163.com" }]
+dependencies = ["httpx>=0.28.1"]
+requires-python = ">=3.9"
+readme = "README.md"
+license = { text = "MIT" }
+urls = { Homepage = "https://github.com/AndersonBY/python-youdao-ai" }
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+[tool.pdm]
+distribution = true
+
+[tool.pdm.scripts]
+test.cmd = "python"
+test.env_file = ".env"
