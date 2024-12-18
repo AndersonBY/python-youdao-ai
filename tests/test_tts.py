@@ -1,7 +1,5 @@
 import os
 
-import httpx
-
 from youdaoai import YoudaoAI
 
 youdaoai_client = YoudaoAI(os.getenv("APP_KEY") or "", os.getenv("APP_SECRET") or "")
