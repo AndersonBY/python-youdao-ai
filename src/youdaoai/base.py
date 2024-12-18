@@ -12,14 +12,14 @@ class Base:
         self.app_key = app_key
         self.app_secret = app_secret
 
-    def _encrypt(self, signStr: str, method: str = "sha256") -> str:
+    def _encrypt(self, sign_str: str, method: str = "sha256") -> str:
         if method == "sha256":
             hash_algorithm = hashlib.sha256()
         elif method == "md5":
             hash_algorithm = hashlib.md5()
         else:
             raise ValueError(f"Invalid method: {method}")
-        hash_algorithm.update(signStr.encode("utf-8"))
+        hash_algorithm.update(sign_str.encode("utf-8"))
         return hash_algorithm.hexdigest()
 
     def _truncate(self, q: Optional[str]) -> Optional[str]:
