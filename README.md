@@ -59,7 +59,7 @@ client = Youdao('你的APP_KEY', '你的APP_SECRET')
 
 # 中文翻译为英文
 result = await client.translate(
-    q='今天天气真不错',
+    text='今天天气真不错',
     from_='zh-CHS',
     to_='en'
 )
