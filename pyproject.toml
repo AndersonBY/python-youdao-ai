@@ -1,5 +1,5 @@
 [project]
-name = "python-youdao-ai"
+name = "youdaoai"
 version = "0.1.0"
 description = "Python SDK for Youdao AI."
 authors = [{ name = "Anderson", email = "andersonby@163.com" }]
