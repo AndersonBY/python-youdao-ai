@@ -72,16 +72,17 @@ class YoudaoAI(BaseClient):
 
     def translate(
         self,
-        q: str,
+        text: str,
         from_: str,
         to_: str,
         ext: Optional[str] = None,
         voice: Optional[str] = None,
         strict: Optional[bool] = None,
+        domain: Optional[str] = None,
         vocab_id: Optional[str] = None,
     ) -> TranslationResponse:
         data: Dict[str, Any] = {}
-        data["q"] = q
+        data["q"] = text
         data["from"] = from_
         data["to"] = to_
         data = self._update_payload(data)
@@ -94,6 +95,8 @@ class YoudaoAI(BaseClient):
             data["strict"] = strict
         if vocab_id:
             data["vocabId"] = vocab_id
+        if domain:
+            data["domain"] = domain
 
         response = self._do_request("api", data)
         return TranslationResponse(**response.json())
@@ -292,16 +295,17 @@ class AsyncYoudaoAI(BaseClient):
 
     async def translate(
         self,
-        q: str,
+        text: str,
         from_: str,
         to_: str,
         ext: Optional[str] = None,
         voice: Optional[str] = None,
         strict: Optional[bool] = None,
+        domain: Optional[str] = None,
         vocab_id: Optional[str] = None,
     ) -> TranslationResponse:
         data: Dict[str, Any] = {}
-        data["q"] = q
+        data["q"] = text
         data["from"] = from_
         data["to"] = to_
         data = self._update_payload(data)
@@ -314,6 +318,8 @@ class AsyncYoudaoAI(BaseClient):
             data["strict"] = strict
         if vocab_id:
             data["vocabId"] = vocab_id
+        if domain:
+            data["domain"] = domain
 
         response = await self._do_request("api", data)
         return TranslationResponse(**response.json())
