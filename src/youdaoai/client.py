@@ -15,6 +15,7 @@ from .types import (
     OCRTableJsonResponse,
     OCRTranslateResponse,
     TTSResponse,
+    YoudaoError,
 )
 from ._utils import _get_base64, _get_audio_info
 
@@ -68,7 +69,10 @@ class BaseClient:
 class YoudaoAI(BaseClient):
     def _do_request(self, api_path: str, data: dict) -> httpx.Response:
         headers = {"Content-Type": "application/x-www-form-urlencoded"}
-        return httpx.post(self.base_url + api_path, data=data, headers=headers)
+        response = httpx.post(self.base_url + api_path, data=data, headers=headers)
+        if response.json().get("errorCode", 0) != 0:
+            raise YoudaoError(response.json())
+        return response
 
     def translate(
         self,
@@ -291,7 +295,10 @@ class AsyncYoudaoAI(BaseClient):
     async def _do_request(self, api_path: str, data: dict) -> httpx.Response:
         headers = {"Content-Type": "application/x-www-form-urlencoded"}
         async with httpx.AsyncClient() as client:
-            return await client.post(self.base_url + api_path, data=data, headers=headers)
+            response = await client.post(self.base_url + api_path, data=data, headers=headers)
+            if response.json().get("errorCode", 0) != 0:
+                raise YoudaoError(response.json())
+            return response
 
     async def translate(
         self,

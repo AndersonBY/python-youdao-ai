@@ -2,6 +2,23 @@ from typing import List, Optional, Union
 from pydantic import BaseModel, Field
 
 
+class ErrorResponse(BaseModel):
+    """有道API的错误响应类型"""
+
+    error_code: str = Field(alias="errorCode")
+    request_id: str = Field(alias="requestId")
+
+
+class YoudaoError(Exception):
+    """有道API的错误"""
+
+    def __init__(self, error_response: dict):
+        self.error_response = ErrorResponse(**error_response)
+        super().__init__(
+            f"Youdao Error: Code: {self.error_response.error_code} - RequestId: {self.error_response.request_id}"
+        )
+
+
 class DictInfo(BaseModel):
     """词典链接信息"""
 
