@@ -70,7 +70,7 @@ class YoudaoAI(BaseClient):
     def _do_request(self, api_path: str, data: dict) -> httpx.Response:
         headers = {"Content-Type": "application/x-www-form-urlencoded"}
         response = httpx.post(self.base_url + api_path, data=data, headers=headers)
-        if response.json().get("errorCode", 0) != 0:
+        if int(response.json().get("errorCode", 0)) != 0:
             raise YoudaoError(response.json())
         return response
 
@@ -296,7 +296,7 @@ class AsyncYoudaoAI(BaseClient):
         headers = {"Content-Type": "application/x-www-form-urlencoded"}
         async with httpx.AsyncClient() as client:
             response = await client.post(self.base_url + api_path, data=data, headers=headers)
-            if response.json().get("errorCode", 0) != 0:
+            if int(response.json().get("errorCode", 0)) != 0:
                 raise YoudaoError(response.json())
             return response
 
